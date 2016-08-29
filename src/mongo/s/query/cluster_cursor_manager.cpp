@@ -111,6 +111,11 @@ ClusterCursorManager::PinnedCursor& ClusterCursorManager::PinnedCursor::operator
     return *this;
 }
 
+void ClusterCursorManager::PinnedCursor::isExhausted()
+{
+    invariant(_cursor);
+    _cursor->setExhausted(true);
+}
 StatusWith<boost::optional<BSONObj>> ClusterCursorManager::PinnedCursor::next() {
     invariant(_cursor);
     return _cursor->next();

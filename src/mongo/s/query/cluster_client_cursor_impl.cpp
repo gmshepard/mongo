@@ -115,6 +115,11 @@ void ClusterClientCursorImpl::queueResult(const BSONObj& obj) {
     _stash.push(obj);
 }
 
+//no use in here
+void ClusterClientCursorImpl::setExhausted(bool isExhausted)
+{
+    _isExhausted = isExhausted;
+}
 bool ClusterClientCursorImpl::remotesExhausted() {
     return _root->remotesExhausted();
 }
