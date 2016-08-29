@@ -45,6 +45,8 @@
 #include "mongo/rpc/request_interface.h"
 #include "mongo/util/string_map.h"
 
+#include "mongo/s/request.h"
+
 namespace mongo {
 
 class BSONObj;
@@ -112,6 +114,10 @@ public:
                      int options,
                      std::string& errmsg,
                      BSONObjBuilder& result) = 0;
+    virtual int rtreeDataMore(int nCount,std::queue<BSONObj>& results) {return 0;}
+    
+    virtual void freeCursor() {}
+                     
 
     /**
      * Translation point between the new request/response types and the legacy types.
