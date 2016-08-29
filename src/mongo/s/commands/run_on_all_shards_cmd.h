@@ -92,6 +92,19 @@ public:
              int options,
              std::string& errmsg,
              BSONObjBuilder& output) final;
+      
+    virtual bool createRtreeIndex(OperationContext* txn,
+                                const std::string& dbName,
+                                BSONObj& cmdObj,
+                                const std::string& columename,
+                                std::string& errmsg,
+                                BSONObjBuilder& output);
+                                
+   virtual bool deleteRtreeIndex(OperationContext* txn,
+                                const std::string& dbName,
+                                BSONObj& cmdObj,
+                                std::string& errmsg,
+                                BSONObjBuilder& output);
 
 private:
     // Use ShardConnection as opposed to ScopedDbConnection
